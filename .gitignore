@@ -196,7 +196,6 @@ pip-selfcheck.json
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
-!.vscode/extensions.json
 !.vscode/*.code-snippets
 
 # Local History for Visual Studio Code
@@ -212,3 +211,14 @@ pip-selfcheck.json
 
 # End of https://www.toptal.com/developers/gitignore/api/virtualenv,visualstudiocode,python,dotenv,direnv
 
+# dlt
+# ignore secrets, virtual environments and typical python compilation artifacts
+secrets.toml
+# ignore basic python artifacts
+.env
+**/__pycache__/
+**/*.py[cod]
+**/*$py.class
+# ignore duckdb
+*.duckdb
+*.wal
