@@ -1,89 +1,49 @@
-# Cursor.ai DLT Development Assistant
+# dlt + Cursor.ai 🖱️: A Practical Approach
 
-This is a POC to setup up a locally optimal, AI-powered development environment that streamlines the creation and maintenance of dlt pipelines using Cursor.ai and Claude 3.5 Sonnet.
+A research project exploring how effectively novice users can create working dlt pipelines using AI assistance. The core hypothesis is that with proper AI guidance, even users new to dlt can successfully build and maintain data pipelines, and potentially develop basic custom sources.
 
-## Overview
+## Development Tiers
 
-This project combines:
-- Cursor.ai's intelligent code editing capabilities
-- Claude 3.5 Sonnet's advanced language understanding
-- dlt's robust data pipeline framework
+**Tier 1: Basic Pipeline Development (90%+ Success Rate)**
+- Single verified source usage
+- Minimal configuration required
+- Single-shot success highly likely
+- Perfect for users new to dlt
 
-to create a seamless development experience for data engineers and developers working with dlt.
+**Tier 2: Advanced Pipeline Development (70% Success Rate)**
+- Hacked sources, custom sources, multiple resources
+- Incremental loading support
+- Transformations
+- Some iteration expected
+- Suitable for users with basic dlt experience
 
-## Project Structure
+**Tier 3: Experimental Development (35-55% Success Rate)**
+- Custom source creation
+- Advanced transformations
+- Complex error handling
+- Multiple iterations likely
+- For users ready to dive deeper
 
-```
-.
-├── .cursorrules           # AI instruction rules for dlt development
-├── dlt/                  # dlt codebase
-├── prompts/              # Optimized prompts for common tasks
-├── templates/            # Pipeline and source templates
-└── docs/                # Documentation
-```
+## Research Goals
 
-## Setup
+This project specifically examines:
+- How effectively can AI assist novice users in creating working pipelines?
+- What is the feasibility of guided custom source development?
+- Where do users typically need the most assistance?
+- What patterns lead to successful first-time implementations?
 
-1. Clone this repository:
-```bash
-git clone --recursive https://github.com/your-org/cursor-dlt-assistant.git
-```
+## Development Pattern
 
-2. Clone dlt for AI context:
-```bash
-git clone --recursive https://github.com/dlt-hub/dlt.git .dlt
-```
+The approach leverages:
+- Thoughtful prompts that tap into Cursor.ai's understanding of dlt
+- Strategic model selection between deepseek-chat and claude-3.5-sonnet
+- Intelligent use of Cursor's reranking and codebase search
 
-3. Install Cursor.ai and configure Claude 3.5 Sonnet
-4. Copy the `.cursorrules` file to your project root
+## Model Selection
 
-## Difficulty Tiers
+| Model | Best For | Notes |
+|-------|----------|--------|
+| deepseek-chat | Quick answers, basic pipelines | Free, fast responses |
+| claude-3.5-sonnet-200k | Complex reasoning, source development | Paid, deeper understanding |
 
-
-
-**Tier 2: Advanced Verified Pipeline (70% Success Rate)**
-- Multiple resources with verified sources
-- Support for incremental loading and hints
-- Minor code modifications expected
-- May require minimal troubleshooting
-- Ideal for production-ready data pipelines
-
-**Tier 3: Experimental Custom Sources (35-55% Success Rate)**
-- Custom source development
-- Experimental features
-- Significant code modifications likely
-- Multiple iterations may be needed
-- Best for advanced users and testing
-
-## Features
-
-**AI-Assisted Development**
-- Optimized prompts for common dlt operations
-- Single-shot code generation for basic pipelines
-- Context-aware documentation assistance
-- Full dlt codebase context for accurate assistance
-
-**Development Focus**
-- Verified sources only
-- Emphasis on simple, working solutions
-- Comprehensive AI context through dlt codebase
-
-## Usage Guidelines
-
-**For Best Results**
-- Start with Tier 1 pipelines
-- Use verified sources whenever possible
-- Expect single-shot success for basic pipelines
-- Plan for iterations with advanced features
-
-**Limitations**
-- Custom destinations are out of scope
-- Complex pipelines may require manual adjustments
-- Experimental features have lower success rates
-
-## Getting Started
-
-1. Choose your pipeline tier based on requirements
-2. Follow the provided templates
-3. Use AI assistance for code generation
-4. Test and iterate as needed
+This isn't just about code generation - it's about understanding how effectively AI can bridge the gap between dlt's capabilities and novice users' needs. The tiered approach provides a clear progression path while setting realistic expectations for success at each level.
