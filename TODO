@@ -1,3 +1,2 @@
 - Amend system prompt with few shots learning (can get from cursor itself)
 - Refine flow of sysprompt
-- Investiage prompt versioning tooling. (promptfoo won't do because we have concret way of testing whether a pipeline works - just run it)
