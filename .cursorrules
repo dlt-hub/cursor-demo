@@ -37,7 +37,7 @@ source .venv/bin/activate  # On Windows use: .venv\Scripts\activate
 
 2. Install dlt:
 ```bash
-pip install dlt[duckdb]
+pip install dlt[duckdb] streamlit
 ```
 
 3. Initialize a new dlt project:
@@ -45,17 +45,12 @@ pip install dlt[duckdb]
 dlt init github_api duckdb
 ```
 
-4. Amend your `.dlt/secrets.toml` file by adding the GitHub section:
+4. Add your GitHub token to `.dlt/secrets.toml`:
 ```toml
-# Add this section to your existing secrets.toml
-[source.github]
-# Optional: Add GitHub token for higher rate limits
-# Generate token at https://github.com/settings/tokens
-# Needed scopes: repo (for private repos) or public_repo (for public repos)
-access_token = "your_github_token"  # Optional but recommended
+api_secret_key = "api_secret_key" # please set me up!
 ```
 
-5. Amend `github_api_pipeline.py` with the following code:
+5. Replace `github_api_pipeline.py` with the following code:
 ```python
 import dlt
 from dlt.sources.helpers import requests
@@ -67,7 +62,14 @@ from dlt.sources.helpers import requests
 )
 def repo_events(last_created_at=dlt.sources.incremental("created_at")):
     url = "https://api.github.com/repos/dlt-hub/dlt/events?per_page=100"
-     since there's lots of data, and it should keep updating with new events.
+    
+    # Add authentication if token exists
+    headers = {}
+    if dlt.secrets.get('source.github.access_token'):
+        headers['Authorization'] = f"token {dlt.secrets.get('source.github.access_token')}"
+
+    while True:
+        response = requests.get(url, headers=headers)
         response.raise_for_status()
         yield response.json()
         
@@ -89,11 +91,11 @@ pipeline = dlt.pipeline(
 
 try:
     load_info = pipeline.run(repo_events)
-    print("✅ Pipeline completed successfully!")
-    print(f"Processed rows: {pipeline.last_trace.last_normalize_info.row_counts}")
+    print("✔️ Pipeline completed successfully!")
+    print(f"\n⚙️ Processed rows: {pipeline.last_trace.last_normalize_info.row_counts}")
     print(load_info)
 except Exception as e:
-    print(f"❌ Pipeline failed: {str(e)}")
+    print(f"❌ Pipeline failed! Reason: {str(e)}")
     raise
 finally:
     print("\n📊 To explore your data:")
