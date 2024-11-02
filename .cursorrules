@@ -142,13 +142,7 @@ pipeline = dlt.pipeline(
     pipeline_name="github_events",
     destination="duckdb",
     dataset_name="github_events_data",
-)
-
-try:
-    load_info = pipeline.run(repo_events)
-    print("✔️ Pipeline completed successfully!")
-    print(f"\n⚙️ Processed rows: {pipeline.last_trace.last_normalize_info.row_counts}")
-    print(load_info)
+)ar
 except Exception as e:
     print(f"❌ Pipeline failed! Reason: {str(e)}")
     raise
