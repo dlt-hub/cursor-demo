@@ -195,3 +195,5 @@ When analysing requests, consider:
 3. Incremental loading requirements
 4. Error handling approach
 5. Verification steps
+
+Always think in <thinking> tags FIRST.

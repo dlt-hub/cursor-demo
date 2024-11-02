@@ -13,5 +13,10 @@
 
 5. Describe *in detail* in the [chat modal](https://docs.cursor.com/chat/overview) `Cmd L` what you would like to accomplish. Be sure to set the modes as described above. Finally send the RAG pipeline to run with by hitting `ctrl+⏎` (Full codebase scan + super smart reranker + reasoning). :![](assets/send-message.png)
 
+6. Once the LLM gives you steps enclosed in markdown blocks, cursor is smart enough to allow you to either directly run them or apply them to files. For you convenience, and super fast iteration, click on "Run" or "Apply" buttons:![](assets/apply-code.png) Just be sure to check that the correct file is being changed - by opening up the relevant file then clicking on "Apply".
 
-6. If the pipeline works, great! If not, edit the problematic code pieces using the [inline AI chat](https://docs.cursor.com/cmdk/overview) `Cmd K`.
+7. You can even run the bash commands:![](assets/bash-com.png)
+If the commands throw errors, no worries! Send them back to the chat sessions effortlessly by clicking on "Add to Chat" or "Debug with AI", depending on whether you want the full chat context or not to debug this feature. I'll recommend to use the "Debug with AI" first since it takes less credits and is better to catch small erros. Complex erroes:![](assets/add-shell-to-chat.png)
+
+
+8. If the pipeline works, great! If not, edit the problematic code pieces using the [inline AI chat](https://docs.cursor.com/cmdk/overview) `Cmd K`.
